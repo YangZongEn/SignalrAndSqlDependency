@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="NotificationTestModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--產生期間發現錯誤:
+警告 6002: 資料表/檢視 'NotificationTest.dbo.ProgressBar' 未定義主索引鍵。已推斷此索引鍵，並將定義建立成唯讀的資料表/檢視。-->
+  <EntityType Name="ProgressBar">
+    <Key>
+      <PropertyRef Name="Id" />
+      <PropertyRef Name="message" />
+      <PropertyRef Name="percent" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="message" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="percent" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="NotificationTestModelStoreContainer">
+    <EntitySet Name="ProgressBar" EntityType="Self.ProgressBar" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+[ProgressBar].[Id] AS [Id], 
+[ProgressBar].[message] AS [message], 
+[ProgressBar].[percent] AS [percent]
+FROM [dbo].[ProgressBar] AS [ProgressBar]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>
